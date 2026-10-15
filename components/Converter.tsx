@@ -432,6 +432,10 @@ export default function Converter() {
               </button>
             </div>
           </>
+        ) : loading ? (
+          <p style={{ color: "var(--text-muted)", marginTop: 16 }}>
+            Extracting transactions…
+          </p>
         ) : (
           <p style={{ color: "var(--text-muted)", marginTop: 16 }}>
             No transactions found. Try a clearer file.
@@ -603,8 +607,8 @@ export default function Converter() {
         </button>
       )}
 
-      {/* 可点击的示例：仅在未选文件时显示 */}
-      {!loading && files.length === 0 && (
+      {/* 可点击的示例：仅在初始状态（无文件且无结果）时显示 */}
+      {!loading && files.length === 0 && results.length === 0 && (
         <button
           className="btn btn-secondary btn-block"
           onClick={loadSample}
