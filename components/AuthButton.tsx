@@ -81,6 +81,10 @@ export default function AuthButton() {
     setLoading(false);
     if (error) {
       setError(error.message);
+    } else if (data.user?.identities && data.user.identities.length === 0) {
+      // 邮箱已注册过（identities 为空数组是 Supabase 的判断标志）
+      setError("This email is already registered. Please sign in instead.");
+      setMode("signin");
     } else if (data.session) {
       // Confirm email 关闭：注册即登录
       setOpen(false);
