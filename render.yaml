@@ -1,0 +1,25 @@
+# Render Blueprint 配置
+# 用法：push 到 GitHub 后，在 Render 点 "New +" → Blueprint，选择此仓库即可自动创建服务。
+services:
+  - type: web
+    name: statement-excel-converter
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: OPENAI_BASE_URL
+        value: https://dashscope.aliyuncs.com/compatible-mode/v1
+      - key: OPENAI_MODEL
+        value: qwen3.7-plus
+      # 下面三个是敏感/项目专属值，部署时在 Render 后台手动填写（sync: false 表示不写入仓库）
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
