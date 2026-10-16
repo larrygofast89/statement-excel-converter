@@ -134,6 +134,12 @@ export default function BankPage({ params }: { params: { slug: string } }) {
               All banks →
             </Link>
           </div>
+          <p style={{ marginTop: 20 }}>
+            Looking for a specific conversion?{" "}
+            <Link href="/converters" className="link-card-more">
+              Browse all conversion types →
+            </Link>
+          </p>
         </div>
       </section>
     </main>

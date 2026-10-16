@@ -101,6 +101,12 @@ export default function ConverterTypePage({
               All types →
             </Link>
           </div>
+          <p style={{ marginTop: 20 }}>
+            Convert a specific bank's statement?{" "}
+            <Link href="/banks" className="link-card-more">
+              Browse supported banks →
+            </Link>
+          </p>
         </div>
       </section>
     </main>

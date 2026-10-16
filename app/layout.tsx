@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://statementexcelconverter.com/icon.svg",
-        width: 512,
-        height: 512,
+        url: "https://statementexcelconverter.com/og-image.png",
+        width: 1200,
+        height: 630,
         alt: "Statement Excel Converter",
       },
     ],
