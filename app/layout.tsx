@@ -24,6 +24,20 @@ export const metadata: Metadata = {
     url: "https://statementexcelconverter.com",
     siteName: "Statement Excel Converter",
     type: "website",
+    images: [
+      {
+        url: "https://statementexcelconverter.com/icon.svg",
+        width: 512,
+        height: 512,
+        alt: "Statement Excel Converter",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bank Statement Converter — Convert PDF to Excel Free",
+    description:
+      "Turn your bank statement PDF into a clean Excel spreadsheet in seconds. Free, no signup.",
   },
 };
 
@@ -69,7 +83,12 @@ export default function RootLayout({
               © {new Date().getFullYear()} Statement Excel Converter. Free bank
               statement to Excel tool.
             </span>
-            <span>Your financial data is processed securely and never stored.</span>
+            <nav className="footer-links">
+              <a href="/about">About</a>
+              <a href="/privacy">Privacy</a>
+              <a href="/terms">Terms</a>
+              <a href="/contact">Contact</a>
+            </nav>
           </div>
         </footer>
       </body>

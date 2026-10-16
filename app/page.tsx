@@ -19,55 +19,55 @@ const features: { icon: LucideIcon; title: string; desc: string }[] = [
   {
     icon: ShieldCheck,
     title: "Private & Secure",
-    desc: "Files are processed securely and deleted after conversion. Your financial data never gets stored or shared.",
+    desc: "Files are processed in memory and deleted right after conversion. Your financial data is never stored, shared, or used for training — it stays yours alone.",
   },
   {
     icon: Target,
     title: "Accurate AI Extraction",
-    desc: "AI reads dates, descriptions, and amounts with high accuracy — including scanned and older PDFs.",
+    desc: "AI reads dates, descriptions, and amounts with high accuracy — including scanned and older PDFs that text-based converters can't handle. Rare mismatches are easy to spot and fix on screen.",
   },
   {
     icon: Zap,
     title: "Instant Conversion",
-    desc: "Turn a multi-page PDF statement into a clean spreadsheet in seconds, not hours of manual typing.",
+    desc: "Turn a multi-page PDF statement into a clean spreadsheet in seconds. No manual typing, no copy-paste, no reformatting — the structure comes out ready to use.",
   },
   {
     icon: Globe,
     title: "Global Currency Support",
-    desc: "Handles USD, EUR, GBP, and dozens of other currencies across banks worldwide.",
+    desc: "Handles USD, EUR, GBP and dozens of other currencies across banks worldwide. Multi-currency statements are read correctly, symbols and all.",
   },
   {
     icon: Layers,
     title: "Batch-Ready",
-    desc: "Convert statements one after another with a consistent output format that's ready for reconciliation.",
+    desc: "Convert several statements back to back with a consistent output — three sheets (Account Info, Summary, Transactions) every time, ready for reconciliation.",
   },
   {
     icon: BadgeCheck,
     title: "Free to Start",
-    desc: "Convert your first statements free — no signup, no credit card, no Excel installation required.",
+    desc: "Convert your first statement free — no signup, no credit card, no Excel installation required. Just upload, convert and download.",
   },
 ];
 
 const audience: { icon: LucideIcon; title: string; desc: string }[] = [
   {
     icon: Receipt,
-    title: "Accountants",
-    desc: "Turn client PDF bank statements into Excel sheets ready for reconciliation and categorization.",
+    title: "Accountants & Bookkeepers",
+    desc: "Turn client PDF bank statements into Excel sheets ready for reconciliation and categorization — no more retyping transaction after transaction into QuickBooks or Xero.",
   },
   {
     icon: Briefcase,
     title: "Business Owners",
-    desc: "Convert bank statement PDFs to spreadsheets for budgeting, cashflow tracking, and internal reporting.",
+    desc: "Convert bank statement PDFs to spreadsheets for budgeting, cashflow tracking and internal reporting. See every transaction in a filterable, sortable table.",
   },
   {
     icon: SearchCheck,
-    title: "Auditors",
-    desc: "Produce structured Excel exports for audit sampling and documentation with consistent formatting.",
+    title: "Auditors & CPAs",
+    desc: "Produce structured Excel exports for audit sampling and documentation with consistent formatting, so supporting schedules tie out cleanly.",
   },
   {
     icon: BarChart3,
     title: "Financial Analysts",
-    desc: "Transform static PDFs into sortable, filterable transaction data ready for analysis.",
+    desc: "Transform static PDFs into sortable, filterable transaction data ready for analysis — no more wrestling with locked-down bank downloads.",
   },
 ];
 
@@ -88,24 +88,40 @@ const steps = [
 
 const faqs = [
   {
-    q: "What's the best PDF to Excel bank statement converter online?",
-    a: "A good converter should handle both digital and scanned PDFs, extract account details plus every transaction, and export to a structured Excel file. Statement Excel Converter does all three with AI-powered accuracy — free, with no signup required.",
+    q: "How do I convert a bank statement PDF to Excel?",
+    a: "Upload your PDF, wait a few seconds for the AI to extract the data, review the transactions, then click Download Excel. It's that simple — no account needed.",
+  },
+  {
+    q: "How accurate is the extraction?",
+    a: "AI reads dates, descriptions and amounts with high accuracy on both digital and scanned PDFs. You can review every transaction on screen before downloading, so any rare mismatch is easy to catch.",
+  },
+  {
+    q: "Does it work with scanned or photographed statements?",
+    a: "Yes. Unlike basic converters that only read text-based PDFs, our AI handles scanned documents and phone photos — including older statements and compressed formats.",
+  },
+  {
+    q: "Can I convert multiple bank statements at once?",
+    a: "You can upload multiple files and choose to merge them into one spreadsheet or keep them separate. Each file is processed with the same consistent three-sheet output.",
+  },
+  {
+    q: "How many pages can I convert?",
+    a: "Without an account you can convert 1 page per day. Sign in to convert more — it's still free, with no credit card required.",
+  },
+  {
+    q: "What if a date or amount is misread?",
+    a: "Review the extracted transactions before downloading. If something looks off, re-upload a clearer file — cleaner scans and photos give the best results.",
   },
   {
     q: "Will my financial data remain private?",
     a: "Yes. Files are processed securely in memory and never stored after conversion. We don't keep copies of your statements or the extracted data.",
   },
   {
-    q: "Does it work with scanned PDFs?",
-    a: "Yes. Unlike basic converters that only read text-based PDFs, our AI handles scanned documents and photos — including bank statements compressed in older formats.",
-  },
-  {
     q: "Do I need Excel installed?",
-    a: "No. You can download the result as a standard .xlsx file (opens in Excel, Google Sheets, or Apple Numbers) or as a .csv for any spreadsheet or accounting tool.",
+    a: "No. Download as a standard .xlsx file (opens in Excel, Google Sheets or Apple Numbers) or as .csv for any spreadsheet or accounting tool.",
   },
   {
-    q: "How do I convert a bank statement PDF to Excel?",
-    a: "Upload your PDF, wait a few seconds for the AI to extract the data, review the transactions, then click Download Excel. It's that simple — no account needed.",
+    q: "Which banks and formats are supported?",
+    a: "The converter works with statements from 30+ banks including Chase, Bank of America, HSBC and Barclays — see the full list on the banks page. Input is PDF, PNG or JPG; output is Excel or CSV.",
   },
 ];
 
@@ -132,6 +148,19 @@ export default function Home() {
     })),
   };
 
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to convert a bank statement PDF to Excel",
+    description:
+      "Upload a bank statement PDF, let AI extract the transactions, then download an Excel or CSV file.",
+    step: steps.map((s) => ({
+      "@type": "HowToStep",
+      name: s.title,
+      text: s.desc,
+    })),
+  };
+
   return (
     <>
       <script
@@ -141,6 +170,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <main>
       {/* ===== Hero ===== */}

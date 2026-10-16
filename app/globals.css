@@ -800,6 +800,22 @@ table.transactions tbody tr:last-child td {
   font-size: 14px;
 }
 
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
 /* ---------- File list (multi-upload) ---------- */
 .file-list {
   text-align: left;
