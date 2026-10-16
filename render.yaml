@@ -16,6 +16,9 @@ services:
         value: https://dashscope.aliyuncs.com/compatible-mode/v1
       - key: OPENAI_MODEL
         value: qwen3.7-plus
+      # 站点正式域名（用于邮箱确认链接的重定向，Render 反代下 request.url 是内部地址）
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://statementexcelconverter.com
       # 下面三个是敏感/项目专属值，部署时在 Render 后台手动填写（sync: false 表示不写入仓库）
       - key: OPENAI_API_KEY
         sync: false

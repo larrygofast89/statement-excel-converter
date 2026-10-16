@@ -21,7 +21,7 @@
 
 ## 第二步：填环境变量
 
-部署后，进入服务 → **Environment**，填下面 5 个环境变量：
+部署后，进入服务 → **Environment**，填下面 6 个环境变量：
 
 | 变量名 | 值 |
 |---|---|
@@ -30,6 +30,7 @@
 | `OPENAI_MODEL` | `qwen3.7-plus` |
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://enplpjohgqfoltzenlhs.supabase.co` |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | 你的 Supabase anon key（从 `.env.local` 复制） |
+| `NEXT_PUBLIC_SITE_URL` | `https://statementexcelconverter.com`（邮箱确认链接重定向用，必填） |
 
 填完点 **Save Changes**，Render 会自动重新部署。
 
@@ -41,7 +42,8 @@
 |---|---|
 | Supabase → Authentication → URL Configuration → **Site URL** | 改成 `https://statementexcelconverter.com` |
 | Supabase → URL Configuration → **Redirect URLs** | 添加 `https://statementexcelconverter.com` |
-| Google Cloud → OAuth Client → **Authorized redirect URIs** | 添加 `https://statementexcelconverter.com` |
+
+> ⚠️ Google Cloud 的 redirect URI **不用改**——它始终指向 Supabase 回调地址 `https://xxx.supabase.co/auth/v1/callback`，与你的网站域名无关。
 
 ## 第四步：绑定域名
 
