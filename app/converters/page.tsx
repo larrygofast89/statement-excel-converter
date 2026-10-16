@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, FileSpreadsheet, CreditCard, TrendingUp, House, Receipt, ScanLine, ImageIcon, FileText } from "lucide-react";
+import { ArrowRight, FileSpreadsheet, CreditCard, TrendingUp, House, Receipt, ScanLine, ImageIcon, FileText, FileCode } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { converterTypes } from "@/lib/converters";
 
 export const metadata: Metadata = {
   title: "Supported Statement Types — Bank Statement Converter",
   description:
-    "Convert bank statements, credit card statements, investment statements and invoices from PDF to Excel or CSV. Free, no signup.",
+    "Convert bank statements, credit card statements, investment statements and invoices from PDF to Excel, CSV, QBO, OFX or QIF. Free, no signup.",
   alternates: { canonical: "https://statementexcelconverter.com/converters" },
 };
 
@@ -20,6 +20,10 @@ const iconMap: Record<string, LucideIcon> = {
   "investment-statement-to-excel": TrendingUp,
   "loan-statement-to-excel": House,
   "invoice-to-excel": Receipt,
+  "pdf-to-qbo": FileCode,
+  "pdf-to-ofx": FileCode,
+  "pdf-to-qif": FileCode,
+  "bank-statement-to-quickbooks": FileCode,
 };
 
 const formats = ["PDF", "PNG", "JPG", "JPEG"];

@@ -14,6 +14,7 @@ import {
   SplitSquareHorizontal,
   Check,
 } from "lucide-react";
+import { toQbo, toOfx, toQif, downloadText } from "@/lib/accounting-export";
 
 type Transaction = {
   date: string;
@@ -350,6 +351,34 @@ export default function Converter() {
     a.click();
   };
 
+  const downloadQbo = (r: Result, idx: number) => {
+    if (!r.transactions?.length) return;
+    const suffix = results.length > 1 ? `-${idx + 1}` : "";
+    downloadText(
+      `bank-statement${suffix}.qbo`,
+      toQbo(r.transactions, r.currency || "USD"),
+      "application/xml"
+    );
+  };
+
+  const downloadOfx = (r: Result, idx: number) => {
+    if (!r.transactions?.length) return;
+    const suffix = results.length > 1 ? `-${idx + 1}` : "";
+    downloadText(
+      `bank-statement${suffix}.ofx`,
+      toOfx(r.transactions, r.currency || "USD")
+    );
+  };
+
+  const downloadQif = (r: Result, idx: number) => {
+    if (!r.transactions?.length) return;
+    const suffix = results.length > 1 ? `-${idx + 1}` : "";
+    downloadText(
+      `bank-statement${suffix}.qif`,
+      toQif(r.transactions)
+    );
+  };
+
   const renderResult = (r: Result, idx: number) => {
     const accountInfoItems: { label: string; value: string | number }[] = [];
     if (r.bankName) accountInfoItems.push({ label: "Bank", value: r.bankName });
@@ -429,6 +458,15 @@ export default function Converter() {
               </button>
               <button className="btn btn-secondary" onClick={() => downloadCsv(r, idx)}>
                 CSV
+              </button>
+              <button className="btn btn-secondary" onClick={() => downloadQbo(r, idx)}>
+                QBO
+              </button>
+              <button className="btn btn-secondary" onClick={() => downloadOfx(r, idx)}>
+                OFX
+              </button>
+              <button className="btn btn-secondary" onClick={() => downloadQif(r, idx)}>
+                QIF
               </button>
             </div>
           </>

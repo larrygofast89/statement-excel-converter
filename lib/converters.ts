@@ -64,6 +64,34 @@ export const converterTypes: ConverterType[] = [
     input: "invoice / receipt",
     desc: "Pull line items, totals and tax from invoices and receipts into a structured Excel spreadsheet.",
   },
+  {
+    slug: "pdf-to-qbo",
+    title: "Convert Bank Statement PDF to QBO (QuickBooks) — Free",
+    h1: "Convert Bank Statement PDF to QBO",
+    input: "PDF bank statement",
+    desc: "Turn a bank statement PDF into a QBO file you can import straight into QuickBooks Desktop or Online — no manual entry.",
+  },
+  {
+    slug: "pdf-to-ofx",
+    title: "Convert Bank Statement PDF to OFX — Free",
+    h1: "Convert Bank Statement PDF to OFX",
+    input: "PDF bank statement",
+    desc: "Export a bank statement PDF to OFX, the open standard that imports into Xero, Sage, GnuCash, MYOB and Wave.",
+  },
+  {
+    slug: "pdf-to-qif",
+    title: "Convert Bank Statement PDF to QIF (Quicken) — Free",
+    h1: "Convert Bank Statement PDF to QIF",
+    input: "PDF bank statement",
+    desc: "Convert a bank statement PDF to QIF for Quicken and other personal-finance tools that use the classic format.",
+  },
+  {
+    slug: "bank-statement-to-quickbooks",
+    title: "Bank Statement to QuickBooks — Free Converter",
+    h1: "Convert Bank Statements to QuickBooks",
+    input: "bank statement PDF",
+    desc: "Get your bank statement into QuickBooks without retyping — extract transactions and download as a QBO file ready to import.",
+  },
 ];
 
 export function getConverterTypeBySlug(slug: string): ConverterType | undefined {
