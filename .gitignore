@@ -28,3 +28,5 @@ render-env.txt
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+upload-to-github.zip
+upload-to-github/

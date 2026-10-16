@@ -572,6 +572,18 @@ table.transactions tbody tr:last-child td {
   box-shadow: var(--shadow-sm);
 }
 
+.feature-card-link {
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.15s, transform 0.1s;
+}
+
+.feature-card-link:hover {
+  border-color: var(--primary);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
 .feature-icon {
   width: 40px;
   height: 40px;
@@ -944,6 +956,18 @@ table.transactions tbody tr:last-child td {
   color: var(--primary-dark);
   background: var(--primary-light);
   font-weight: 600;
+}
+
+.bank-chip-link {
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.bank-chip-link:hover {
+  border-color: var(--primary);
+  color: var(--primary-dark);
+  background: var(--primary-light);
+  text-decoration: none;
 }
 
 .fmt-row {

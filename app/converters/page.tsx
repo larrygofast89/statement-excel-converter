@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, FileSpreadsheet, CreditCard, TrendingUp, House, Receipt } from "lucide-react";
+import { ArrowRight, FileSpreadsheet, CreditCard, TrendingUp, House, Receipt, ScanLine, ImageIcon, FileText } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { converterTypes } from "@/lib/converters";
 
 export const metadata: Metadata = {
   title: "Supported Statement Types — Bank Statement Converter",
@@ -10,33 +11,16 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://statementexcelconverter.com/converters" },
 };
 
-const statementTypes: { icon: LucideIcon; title: string; desc: string }[] = [
-  {
-    icon: FileSpreadsheet,
-    title: "Bank statements",
-    desc: "Checking and savings account statements, with every transaction, opening balance and summary extracted.",
-  },
-  {
-    icon: CreditCard,
-    title: "Credit card statements",
-    desc: "Credit card bills with purchases, payments, fees and interest itemized into rows.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Investment & brokerage",
-    desc: "Brokerage and investment account statements with trades, dividends and holdings.",
-  },
-  {
-    icon: House,
-    title: "Loan & mortgage",
-    desc: "Loan and mortgage statements with principal, interest and payment breakdowns.",
-  },
-  {
-    icon: Receipt,
-    title: "Invoices & receipts",
-    desc: "Invoices and receipts with line items, totals and tax extracted to a clean spreadsheet.",
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  "pdf-to-excel": FileSpreadsheet,
+  "pdf-to-csv": FileText,
+  "scanned-pdf-to-excel": ScanLine,
+  "image-to-excel": ImageIcon,
+  "credit-card-statement-to-excel": CreditCard,
+  "investment-statement-to-excel": TrendingUp,
+  "loan-statement-to-excel": House,
+  "invoice-to-excel": Receipt,
+};
 
 const formats = ["PDF", "PNG", "JPG", "JPEG"];
 
@@ -60,15 +44,18 @@ export default function ConvertersPage() {
       <section className="section">
         <div className="container">
           <div className="feature-grid">
-            {statementTypes.map((t) => (
-              <div className="feature-card" key={t.title}>
-                <div className="feature-icon">
-                  <t.icon size={20} strokeWidth={2} />
-                </div>
-                <h3>{t.title}</h3>
-                <p>{t.desc}</p>
-              </div>
-            ))}
+            {converterTypes.map((t) => {
+              const Icon = iconMap[t.slug] || FileSpreadsheet;
+              return (
+                <Link href={`/converters/${t.slug}`} className="feature-card feature-card-link" key={t.slug}>
+                  <div className="feature-icon">
+                    <Icon size={20} strokeWidth={2} />
+                  </div>
+                  <h3>{t.h1}</h3>
+                  <p>{t.desc}</p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

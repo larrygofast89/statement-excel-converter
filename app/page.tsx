@@ -146,7 +146,7 @@ export default function Home() {
       {/* ===== Hero ===== */}
       <section className="hero">
         <div className="container">
-          <h1>Convert PDF Bank Statements to Excel</h1>
+          <h1>Bank Statement Converter — Convert PDF to Excel &amp; CSV</h1>
           <p className="hero-sub">
             Turn complex PDF transaction pages into structured spreadsheets you
             can analyze instantly. Works with digital and scanned statements

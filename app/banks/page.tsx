@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Landmark } from "lucide-react";
+import { banks } from "@/lib/banks";
 
 export const metadata: Metadata = {
   title: "Supported Banks — Bank Statement Converter",
@@ -9,60 +10,18 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://statementexcelconverter.com/banks" },
 };
 
-const bankGroups: { region: string; banks: string[] }[] = [
-  {
-    region: "United States",
-    banks: [
-      "Chase",
-      "Bank of America",
-      "Wells Fargo",
-      "Citibank",
-      "Capital One",
-      "PNC",
-      "U.S. Bank",
-      "TD Bank",
-      "Truist",
-      "American Express",
-      "Discover",
-      "Ally Bank",
-      "USAA",
-      "Navy Federal",
-      "Regions",
-    ],
-  },
-  {
-    region: "United Kingdom",
-    banks: [
-      "HSBC",
-      "Barclays",
-      "Lloyds",
-      "NatWest",
-      "Santander UK",
-      "Nationwide",
-      "Monzo",
-      "Revolut",
-    ],
-  },
-  {
-    region: "Canada",
-    banks: ["RBC", "TD Canada Trust", "Scotiabank", "BMO", "CIBC"],
-  },
-  {
-    region: "Australia",
-    banks: ["Commonwealth Bank", "Westpac", "ANZ", "NAB"],
-  },
-  {
-    region: "International",
-    banks: [
-      "Deutsche Bank",
-      "DBS",
-      "ICBC",
-      "Standard Chartered",
-      "BNP Paribas",
-      "UBS",
-    ],
-  },
+const regionOrder = [
+  "United States",
+  "United Kingdom",
+  "Canada",
+  "Australia",
+  "International",
 ];
+
+const bankGroups = regionOrder.map((region) => ({
+  region,
+  banks: banks.filter((b) => b.region === region),
+}));
 
 export default function BanksPage() {
   return (
@@ -90,9 +49,9 @@ export default function BanksPage() {
               </h2>
               <div className="bank-chips">
                 {g.banks.map((b) => (
-                  <span className="bank-chip" key={b}>
-                    {b}
-                  </span>
+                  <Link href={`/banks/${b.slug}`} className="bank-chip bank-chip-link" key={b.slug}>
+                    {b.name}
+                  </Link>
                 ))}
               </div>
             </div>
